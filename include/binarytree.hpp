@@ -23,8 +23,13 @@ class BinaryTree
     Node* root;
 
 public:
+    // TODO конструктор создаёт дерево в невалидном состоянии
+    // и такое можно через дефолтные значения полей сделать
     BinaryTree () : root(nullptr) {}
 
+    // TODO!!!! где деструктор, блять???
+
+    // TODO надо возвращать Iterator
     ValueType find (const KeyType& key) const // Maybe return only value?
     {
         return find (root, key)->value;
@@ -46,8 +51,10 @@ public:
     }
 
 private:
+    // TODO бро, это же метод Node
     Node* insert (Node* node, const KeyType& key, const ValueType value)
     {
+        // TODO root не может быть nullptr, ибо это невалидное дерево
         if (root == nullptr)
         {
             root = new Node (key, value);
@@ -161,6 +168,7 @@ private:
         return node;
     }
 
+    // TODO вместо const std::string& юзай std::string_view
     void printTree (Node* node, const std::string& prefix, bool isLeft) const
     {
         if (node == nullptr)
@@ -178,6 +186,7 @@ private:
     }
 };
 
+// TODO namespace alib???
 }
 
 #endif // ALIB_BTREE_HPP
